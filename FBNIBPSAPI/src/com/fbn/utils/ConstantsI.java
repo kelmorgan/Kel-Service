@@ -6,5 +6,5 @@ public interface ConstantsI {
     String wrapperPort = "WRAPPERPORT";
     String userName = "USERNAME";
     String password = "PASSWORD";
-    String configPath = "";
+    String configPath = "/was/IBM/WebSphere/Utilities/FBNIBPSSERVICE/config.properties";
 }
