@@ -6,8 +6,8 @@ import com.fbn.customService.CreateWorkItem;
 
 public class Service {
     private final String sessionId;
-    public Service() {
-        this.sessionId = new Controller().getSessionId();
+    public Service(String sessionId) {
+        this.sessionId = sessionId;
     }
     public void completeWorkItem (String wiName){
         new CompleteWorkItem(sessionId,wiName);
