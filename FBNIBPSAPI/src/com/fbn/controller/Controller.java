@@ -115,8 +115,8 @@ public class Controller implements ConstantsI {
     public Set<Map<String,String>> getRecords(String query){
         return new DbConnect(RequestXml.getSelectQueryXml(query,LoadProp.serverCabinetName)).getData();
     }
-    public void updateRecords(String sessionId, String tableName, String columnName, String values, String condition){
-        new DbConnect(RequestXml.getUpdateQueryXml(LoadProp.serverCabinetName, sessionId, tableName, columnName, values, condition)).saveData();
+    public int updateRecords(String sessionId, String tableName, String columnName, String values, String condition){
+       return new DbConnect(RequestXml.getUpdateQueryXml(LoadProp.serverCabinetName, sessionId, tableName, columnName, values, condition)).saveData();
     }
     public int insertRecords(String sessionId,String tableName,String columnName, String values){
         return new DbConnect(RequestXml.getInsertQueryXml(LoadProp.serverCabinetName,sessionId,tableName,columnName,values)).saveData();

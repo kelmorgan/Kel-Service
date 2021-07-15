@@ -7,4 +7,6 @@ public interface ConstantsI {
     String userName = "USERNAME";
     String password = "PASSWORD";
     String configPath = "/was/IBM/WebSphere/Utilities/FBNIBPSSERVICE/config.properties";
+    String apiSuccess = "success";
+    String apiFailed = "failed";
 }
