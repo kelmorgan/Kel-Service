@@ -9,7 +9,7 @@ public class LogGen {
             logger = Logger.getLogger(loggerName);
             PatternLayout layout = new PatternLayout();
             layout.setConversionPattern("[%d{dd MMM yyyy HH:mm:ss:SSS}] (%F:%L) - %m%n");
-            String logFile = "iBPSApiService/" + loggerName + ".log";
+            String logFile = "/was/IBM/WebSphere/Utilities/FBNIBPSSERVICE/" + loggerName + ".log";
             RollingFileAppender appender = new RollingFileAppender((Layout)layout, logFile, true);
             appender.setMaxFileSize("1000KB");
             appender.setMaxBackupIndex(10);
