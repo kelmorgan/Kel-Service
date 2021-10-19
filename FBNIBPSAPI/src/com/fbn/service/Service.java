@@ -27,6 +27,7 @@ public class Service implements ConstantsI {
         new CompleteWorkItem(sessionId,wiName);
     }
     public void completeWorkItem (String wiName, String tableName,String attribute, String value, String condition){
+    	//test change
         new CompleteWorkItem(sessionId,wiName,tableName,attribute,value,condition);
     }
     public String createWorkItem(String attributes,String processDefId,String queueId, String initiateFlag){
