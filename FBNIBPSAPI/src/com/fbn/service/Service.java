@@ -4,14 +4,24 @@ import com.fbn.controller.Controller;
 import com.fbn.customService.CompleteWorkItem;
 import com.fbn.customService.CreateWorkItem;
 import com.fbn.utils.ConstantsI;
+import com.fbn.utils.LoadProp;
 
 import java.util.Map;
 import java.util.Set;
 
 public class Service implements ConstantsI {
     private final String sessionId;
+    private static String configPath;
+
     public Service(String sessionId) {
         this.sessionId = sessionId;
+    }
+
+    public static String getConfigPath() {
+        return configPath;
+    }
+    public static void setConfigPath(String configPath) {
+        Service.configPath = configPath;
     }
     public void completeWorkItem (String wiName){
         new CompleteWorkItem(sessionId,wiName);
@@ -36,4 +46,11 @@ public class Service implements ConstantsI {
         int insertStatus = new Controller().insertRecords(sessionId,tableName,column,values);
         return (insertStatus == 1) ? apiSuccess : apiFailed;
     }
+    public static String getSessionId(String userName,String passWord){
+        return new Controller().getSessionId(userName,passWord);
+    }
+    public static String getSessionId(){
+        return new Controller().getSessionId();
+    }
+
 }
