@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class Controller implements ConstantsI {
-    private final Logger logger = LogGen.getLoggerInstance("Service Logger");
+    private final Logger logger = LogGen.getLoggerInstance(logName);
     private final XmlParser xmlParser = new XmlParser();
     private String inputXml;
     private String outputXml;
@@ -29,7 +29,7 @@ public class Controller implements ConstantsI {
                 return xmlParser.getValueOf("SessionId");
 
         } catch (Exception e) {
-            e.printStackTrace();
+           logger.error("Exception occurred in getSessionId Method: "+e.getMessage());
         }
         return null;
     }
@@ -47,7 +47,7 @@ public class Controller implements ConstantsI {
                 return xmlParser.getValueOf("SessionId");
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Exception occurred in getSessionId Method: "+e.getMessage());
         }
         return null;
     }
@@ -64,7 +64,7 @@ public class Controller implements ConstantsI {
             if(success(xmlParser.getValueOf("MainCode")))
                 return xmlParser.getValueOf("ProcessInstanceId");
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Exception occurred in create workitem Method: "+e.getMessage());
         }
         return null;
     }
@@ -79,7 +79,7 @@ public class Controller implements ConstantsI {
             logger.info("outputXml: "+outputXml);
             System.out.println("outputXml from completeworkitem-- "+outputXml);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Exception occurred in complete Method: "+e.getMessage());
         }
     }
     public void lockWorkItem(String sessionId,String wiName){
@@ -94,7 +94,7 @@ public class Controller implements ConstantsI {
             logger.info("outputXml: "+outputXml);
             System.out.println("outputXml from lock workitem-- "+outputXml);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Exception occurred in lock workitem Method: "+e.getMessage());
         }
     }
     public void unlockWorkItem (String sessionId,String wiName){
@@ -109,7 +109,7 @@ public class Controller implements ConstantsI {
             System.out.println("outputXml from unlock workitem-- "+outputXml);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Exception occurred in unlock workitem Method: "+e.getMessage());
         }
     }
     public void setAttribute(String sessionId,String wiName,String attributeName, String value){
@@ -122,7 +122,7 @@ public class Controller implements ConstantsI {
             outputXml = Api.executeCall(inputXml);
             System.out.println("outputXml from setAttribute-- "+ outputXml);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Exception occurred in setAttribute Method: "+e.getMessage());
         }
     }
     public void sendMail(String sessionId, String activityId, String processInstanceId,String processDefId, String mailFrom, String mailTo, String mailCC, String mailSubject, String mailMessage   ) {
@@ -131,9 +131,10 @@ public class Controller implements ConstantsI {
         logger.info("inputXml: "+inputXml);
         try {
             outputXml = Api.executeCall(inputXml);
+            logger.info("outputXml: "+outputXml);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Exception occurred in sendMail Method: "+e.getMessage());
         }
 
     }
@@ -147,7 +148,7 @@ public class Controller implements ConstantsI {
             logger.info("outputXml: "+outputXml);
             System.out.println("outputXml from disconnect cabinet-- "+outputXml);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Exception occurred in disconnect cabinet Method: "+e.getMessage());
         }
     }
     public Set<Map<String,String>> getRecords(String query){

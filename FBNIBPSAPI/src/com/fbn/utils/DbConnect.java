@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class DbConnect implements ConstantsI{
-    private final Logger logger = LogGen.getLoggerInstance("Service Logger");
+    private final Logger logger = LogGen.getLoggerInstance(logName);
     private final String queryXml;
     private String outputXml;
     private final XmlParser xmlParser = new XmlParser();
@@ -27,7 +27,7 @@ public class DbConnect implements ConstantsI{
             if (success(xmlParser.getValueOf("MainCode")))
                 return xmlParser.getXMLData(outputXml,"Record");
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Exception occurred in getData Method: "+e.getMessage());
         }
         return null;
     }
@@ -41,7 +41,7 @@ public class DbConnect implements ConstantsI{
             if (success(xmlParser.getValueOf("MainCode")))
                 return 1;
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Exception occurred in saveData Method: "+e.getMessage());
         }
         return -1;
     }

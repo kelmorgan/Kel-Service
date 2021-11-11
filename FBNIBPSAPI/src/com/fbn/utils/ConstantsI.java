@@ -4,6 +4,7 @@ public interface ConstantsI {
     String apiSuccess = "success";
     String apiFailed = "failed";
     String empty = "";
+    String logName = "Service Logger";
 
     //config mandatory fields
     String appServerIp = "APPSERVERIP";

@@ -1,11 +1,13 @@
 package com.fbn.utils;
 
 import com.fbn.service.Service;
+import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.util.Properties;
 
 public class LoadProp implements ConstantsI {
+    private static final Logger logger = LogGen.getLoggerInstance(logName);
     public static String serverIp;
     public static String serverWrapperPort;
     public static String serverCabinetName;
@@ -24,8 +26,8 @@ public class LoadProp implements ConstantsI {
             serviceUserName = properties.getProperty(userName);
             serviceUserPassword = properties.getProperty(password);
             serviceLogPath = properties.getProperty(logPathField);
-        } catch  (IOException ex){
-            ex.printStackTrace();
+        } catch  (Exception e){
+            logger.error("Exception occurred in reading user Config file: "+e.getMessage());
         }
     }
 }
