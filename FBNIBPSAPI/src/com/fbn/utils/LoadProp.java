@@ -1,9 +1,10 @@
 package com.fbn.utils;
 
-import com.fbn.service.Service;
+import com.fbn.service.ServiceHandler;
 import org.apache.log4j.Logger;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class LoadProp implements ConstantsI {
@@ -18,7 +19,7 @@ public class LoadProp implements ConstantsI {
     static {
         try {
             Properties properties = new Properties();
-            InputStream in = new FileInputStream(Service.getConfigPath());
+            InputStream in = new FileInputStream(ServiceHandler.getConfigPath());
             properties.load(in);
             serverIp = properties.getProperty(appServerIp);
             serverWrapperPort = properties.getProperty(wrapperPort);
