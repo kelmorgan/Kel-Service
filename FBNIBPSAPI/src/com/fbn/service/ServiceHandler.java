@@ -15,4 +15,5 @@ public interface ServiceHandler {
     String updateRecord(String tableName, String columnName, String values, String condition);
     String insertRecords(String tableName, String column, String values);
     String getSessionId(String userName,String passWord);
+    void setSessionId(String sessionId);
 }

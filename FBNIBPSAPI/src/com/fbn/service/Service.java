@@ -64,6 +64,7 @@ public class Service implements ConstantsI,ServiceHandler {
         return new Controller().getSessionId();
     }
 
+    @Override
     public void setSessionId(String sessionId) {
         this.sessionId = sessionId;
     }
