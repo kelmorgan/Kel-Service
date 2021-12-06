@@ -1,4 +1,4 @@
-package com.fbn.generateXml;
+package com.kelmorgan.generateXml;
 
 public class RequestXml {
         public static String getConnectCabinetXml(String cabinetName, String userName, String password){

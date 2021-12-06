@@ -1,6 +1,6 @@
-package com.fbn.utils;
+package com.kelmorgan.utils;
 
-public interface ConstantsI {
+public interface Constants {
     String apiSuccess = "success";
     String apiFailed = "failed";
     String empty = "";

@@ -1,7 +1,7 @@
-package com.fbn.customService;
+package com.kelmorgan.customService;
 
-import com.fbn.controller.Controller;
-import com.fbn.utils.LoadProp;
+import com.kelmorgan.controller.Controller;
+import com.kelmorgan.utils.LoadProp;
 import org.apache.log4j.Logger;
 
 

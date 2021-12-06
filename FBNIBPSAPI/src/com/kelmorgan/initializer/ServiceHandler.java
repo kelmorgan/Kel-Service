@@ -1,11 +1,11 @@
-package com.fbn.service;
+package com.kelmorgan.initializer;
 
 import java.util.Map;
 import java.util.Set;
 
 public interface ServiceHandler {
-    void completeWorkItem(String wiName);
-    void completeWorkItem(String wiName, String tableName, String attribute, String value, String condition);
+    String completeWorkItem(String wiName);
+    String completeWorkItem(String wiName, String tableName, String attribute, String value, String condition);
     String createWorkItem(String attributes, String processDefId, String queueId, String initiateFlag);
     void disconnectCabinet();
     Set<Map<String,String>> getRecords(String query);

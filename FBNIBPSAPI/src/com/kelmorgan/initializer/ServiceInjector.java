@@ -1,4 +1,6 @@
-package com.fbn.service;
+package com.kelmorgan.initializer;
+
+import com.kelmorgan.service.Service;
 
 public interface ServiceInjector {
 

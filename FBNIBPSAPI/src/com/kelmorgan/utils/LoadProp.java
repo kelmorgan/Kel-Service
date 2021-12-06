@@ -1,10 +1,10 @@
-package com.fbn.utils;
+package com.kelmorgan.utils;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class LoadProp implements ConstantsI {
+public class LoadProp implements Constants {
     private final Properties properties = new Properties();
 
     public LoadProp(String configPath)  {

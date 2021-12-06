@@ -1,15 +1,15 @@
-package com.fbn.controller;
+package com.kelmorgan.controller;
 
 
-import com.fbn.api.Api;
-import com.fbn.generateXml.RequestXml;
-import com.fbn.utils.*;
+import com.kelmorgan.api.Api;
+import com.kelmorgan.generateXml.RequestXml;
+import com.kelmorgan.utils.*;
 import org.apache.log4j.Logger;
 
 import java.util.Map;
 import java.util.Set;
 
-public class Controller implements ConstantsI {
+public class Controller implements Constants {
     private final Logger logger;
     private final XmlParser xmlParser = new XmlParser();
     private String inputXml;
@@ -80,7 +80,7 @@ public class Controller implements ConstantsI {
         }
         return null;
     }
-    public void completeWorkItem (String sessionId, String wiName) {
+    public String completeWorkItem (String sessionId, String wiName) {
         logger.info("Welcome to Complete WorkItem method");
         inputXml = RequestXml.getCompleteWorkItemXml(cabinetName,sessionId,wiName);
         logger.info("inputXml: "+inputXml);
@@ -90,9 +90,13 @@ public class Controller implements ConstantsI {
             outputXml = api.executeCall(inputXml);
             logger.info("outputXml: "+outputXml);
             System.out.println("outputXml from completeworkitem-- "+outputXml);
+            xmlParser.setInputXML(outputXml);
+
+            if (success(xmlParser.getValueOf("MainCode")))  return apiSuccess;
         } catch (Exception e) {
             logger.error("Exception occurred in complete Method: "+e.getMessage());
         }
+        return apiFailed;
     }
     public void lockWorkItem(String sessionId,String wiName){
         logger.info("Welcome to Lock WorkItem method");

@@ -1,13 +1,13 @@
-package com.fbn.utils;
+package com.kelmorgan.utils;
 
 
-import com.fbn.api.Api;
+import com.kelmorgan.api.Api;
 import org.apache.log4j.Logger;
 
 import java.util.Map;
 import java.util.Set;
 
-public class DbConnect implements ConstantsI{
+public class DbConnect implements Constants {
     private final Logger logger;
     private final String queryXml;
     private String outputXml;
