@@ -3,13 +3,18 @@ package com.fbn.utils;
 import org.apache.log4j.*;
 
 public class LogGen {
-    public static Logger getLoggerInstance(String loggerName) {
+    private final LoadProp loadProp;
+    public LogGen(LoadProp loadProp) {
+        this.loadProp = loadProp;
+    }
+
+    public  Logger getLoggerInstance(String loggerName) {
         Logger logger = null;
         try {
             logger = Logger.getLogger(loggerName);
             PatternLayout layout = new PatternLayout();
             layout.setConversionPattern("[%d{dd MMM yyyy HH:mm:ss:SSS}] (%F:%L) - %m%n");
-            String logFile = LoadProp.serviceLogPath + loggerName + ".log";
+            String logFile = loadProp.getServiceLogPath() + loggerName + ".log";
             RollingFileAppender appender = new RollingFileAppender((Layout)layout, logFile, true);
             appender.setMaxFileSize("1000KB");
             appender.setMaxBackupIndex(10);

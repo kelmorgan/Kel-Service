@@ -4,9 +4,14 @@ package com.fbn.api;
 import com.fbn.utils.LoadProp;
 import com.newgen.wfdesktop.xmlapi.WFCallBroker;
 
-public class Api  {
+public class Api {
+    private final LoadProp loadProp;
 
-    public static String executeCall (String request) throws Exception {
-        return WFCallBroker.execute(request, LoadProp.serverIp, Integer.parseInt(LoadProp.serverWrapperPort), 1);
+    public Api(LoadProp loadProp) {
+        this.loadProp = loadProp;
+    }
+
+    public  String executeCall (String request) throws Exception {
+        return WFCallBroker.execute(request, loadProp.getServerIp(), Integer.parseInt(loadProp.getServerWrapperPort()), 1);
     }
 }

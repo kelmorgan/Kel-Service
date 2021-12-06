@@ -8,18 +8,21 @@ import java.util.Map;
 import java.util.Set;
 
 public class DbConnect implements ConstantsI{
-    private final Logger logger = LogGen.getLoggerInstance(logName);
+    private final Logger logger;
     private final String queryXml;
     private String outputXml;
+    private final Api api;
     private final XmlParser xmlParser = new XmlParser();
-    public DbConnect(String queryXml){
+    public DbConnect(Logger logger, Api api,String queryXml ){
+        this.logger = logger;
         this.queryXml = queryXml;
+        this.api = api;
     }
 
     public Set<Map<String,String>> getData() {
         try {
             logger.info("Get Data Query: "+queryXml);
-            outputXml = Api.executeCall(queryXml);
+            outputXml = api.executeCall(queryXml);
             logger.info("Get Data Result: "+outputXml);
             System.out.println(outputXml);
             xmlParser.setInputXML(outputXml);
@@ -34,7 +37,7 @@ public class DbConnect implements ConstantsI{
     public int saveData (){
         try {
             logger.info("Save Data Query: "+queryXml);
-            outputXml = Api.executeCall(queryXml);
+            outputXml = api.executeCall(queryXml);
             logger.info("Save Data Result: "+outputXml);
             System.out.println(outputXml);
             xmlParser.setInputXML(outputXml);

@@ -7,10 +7,10 @@ public interface ConstantsI {
     String logName = "Service Logger";
 
     //config mandatory fields
-    String appServerIp = "APPSERVERIP";
-    String cabinetName = "CABINETNAME";
-    String wrapperPort = "WRAPPERPORT";
-    String userName = "USERNAME";
-    String password = "PASSWORD";
+    String appServerIpField = "APPSERVERIP";
+    String cabinetNameField = "CABINETNAME";
+    String wrapperPortField = "WRAPPERPORT";
+    String usernameField = "USERNAME";
+    String passwordField = "PASSWORD";
     String logPathField = "LOGPATH";
 }
