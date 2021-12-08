@@ -1,8 +1,6 @@
 package com.kelmorgan.customService;
 
 import com.kelmorgan.controller.Controller;
-import com.kelmorgan.utils.LoadProp;
-import org.apache.log4j.Logger;
 
 public class CompleteWorkItem {
 
@@ -12,24 +10,24 @@ public class CompleteWorkItem {
         private final String sessionId;
         private String condition;
         private String tableName;
-    private final Controller controller;
+        private final Controller controller;
 
 
 
-        public CompleteWorkItem(String sessionId, String wiName, Logger logger, LoadProp loadProp) {
+        public CompleteWorkItem(String sessionId, String wiName, Controller controller) {
             this.sessionId = sessionId;
             this.wiName = wiName;
-            this.controller = new Controller(logger,loadProp);
+            this.controller = controller;
         }
 
-        public CompleteWorkItem(String sessionId, String wiName, String tableName, String attribute, String value, String condition, Logger logger, LoadProp loadProp){
+        public CompleteWorkItem(String sessionId, String wiName, String tableName, String attribute, String value, String condition, Controller controller){
             this.wiName = wiName;
             this.attribute = attribute;
             this.value = value;
             this.sessionId = sessionId;
             this.tableName = tableName;
             this.condition = condition;
-            this.controller = new Controller(logger,loadProp);
+            this.controller = controller;
         }
 
         public   String completeWorkItem(){

@@ -14,7 +14,7 @@ import java.util.Set;
 
 public class Service implements Constants, ServiceHandler {
     private  String sessionId;
-    private final LoadProp  loadProp;
+    private final LoadProp loadProp;
     private final Logger logger;
     private final Controller controller;
 
@@ -22,29 +22,29 @@ public class Service implements Constants, ServiceHandler {
 
     public Service(String configPath)  {
         this.loadProp = new LoadProp(configPath);
-        this.sessionId = getSessionId();
         this.logger = new LogGen(loadProp).getLoggerInstance(logName);
         this.controller = new Controller(logger,loadProp);
+        this.sessionId = getSessionId();
     }
 
     public Service(String configPath,String username, String password) {
         this.loadProp = new LoadProp(configPath);
-        this.sessionId = getSessionId(username,password);
         this.logger = new LogGen(loadProp).getLoggerInstance(logName);
         this.controller = new Controller(logger,loadProp);
+        this.sessionId = getSessionId(username,password);
     }
 
     @Override
     public String completeWorkItem (String wiName){
-       return new CompleteWorkItem(sessionId,wiName, logger, loadProp).completeWorkItem();
+       return new CompleteWorkItem(sessionId,wiName,controller).completeWorkItem();
     }
     @Override
     public String completeWorkItem (String wiName, String tableName, String attribute, String value, String condition){
-       return new CompleteWorkItem(sessionId,wiName,tableName,attribute,value,condition, logger, loadProp).completeWorkItemWithAttribute();
+       return new CompleteWorkItem(sessionId,wiName,tableName,attribute,value,condition, controller).completeWorkItemWithAttribute();
     }
     @Override
     public String createWorkItem(String attributes,String processDefId,String queueId, String initiateFlag){
-        return new CreateWorkItem(sessionId,attributes,processDefId,queueId,initiateFlag, logger, loadProp).getCreatedWorkItem();
+        return new CreateWorkItem(sessionId,attributes,processDefId,queueId,initiateFlag,controller).getCreatedWorkItem();
     }
     @Override
     public void disconnectCabinet(){
