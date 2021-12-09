@@ -33,7 +33,7 @@ public class CompleteWorkItem {
         public   String completeWorkItem(){
             controller.unlockWorkItem(sessionId,wiName);
             controller.lockWorkItem(sessionId,wiName);
-            return  controller.completeWorkItem(sessionId,wiName);
+            return  controller.completeWorkItem(sessionId ,wiName);
         }
         public   String completeWorkItemWithAttribute(){
             controller.unlockWorkItem(sessionId,wiName);
