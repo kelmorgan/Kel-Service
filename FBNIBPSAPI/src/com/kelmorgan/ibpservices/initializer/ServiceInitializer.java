@@ -1,6 +1,6 @@
-package com.kelmorgan.initializer;
+package com.kelmorgan.ibpservices.initializer;
 
-import com.kelmorgan.service.Service;
+import com.kelmorgan.ibpservices.service.Service;
 
 public class ServiceInitializer implements ServiceInjector {
     @Override

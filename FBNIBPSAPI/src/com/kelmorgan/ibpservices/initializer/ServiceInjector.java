@@ -1,4 +1,4 @@
-package com.kelmorgan.initializer;
+package com.kelmorgan.ibpservices.initializer;
 
 public interface ServiceInjector {
 

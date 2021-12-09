@@ -1,6 +1,6 @@
-package com.kelmorgan.customService;
+package com.kelmorgan.ibpservices.customService;
 
-import com.kelmorgan.controller.Controller;
+import com.kelmorgan.ibpservices.controller.Controller;
 
 public class CompleteWorkItem {
 

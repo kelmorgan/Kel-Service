@@ -1,4 +1,4 @@
-package com.kelmorgan.utils;
+package com.kelmorgan.ibpservices.utils;
 
 import java.io.FileInputStream;
 import java.io.InputStream;

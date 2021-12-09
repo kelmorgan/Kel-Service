@@ -1,4 +1,4 @@
-package com.kelmorgan.utils;
+package com.kelmorgan.ibpservices.utils;
 
 public interface Constants {
     String apiSuccess = "success";

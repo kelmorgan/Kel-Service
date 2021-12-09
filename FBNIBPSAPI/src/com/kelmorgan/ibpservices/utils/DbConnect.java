@@ -1,7 +1,7 @@
-package com.kelmorgan.utils;
+package com.kelmorgan.ibpservices.utils;
 
 
-import com.kelmorgan.api.Api;
+import com.kelmorgan.ibpservices.api.Api;
 import org.apache.log4j.Logger;
 
 import java.util.Map;

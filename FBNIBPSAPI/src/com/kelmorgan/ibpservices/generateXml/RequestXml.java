@@ -1,4 +1,4 @@
-package com.kelmorgan.generateXml;
+package com.kelmorgan.ibpservices.generateXml;
 
 public class RequestXml {
         public static String getConnectCabinetXml(String cabinetName, String userName, String password){

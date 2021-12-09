@@ -1,7 +1,7 @@
-package com.kelmorgan.api;
+package com.kelmorgan.ibpservices.api;
 
 
-import com.kelmorgan.utils.LoadProp;
+import com.kelmorgan.ibpservices.utils.LoadProp;
 import com.newgen.wfdesktop.xmlapi.WFCallBroker;
 
 public class Api {
