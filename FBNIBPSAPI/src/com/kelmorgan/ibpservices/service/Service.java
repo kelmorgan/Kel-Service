@@ -3,7 +3,7 @@ package com.kelmorgan.ibpservices.service;
 import com.kelmorgan.ibpservices.controller.Controller;
 import com.kelmorgan.ibpservices.customService.CompleteWorkItem;
 import com.kelmorgan.ibpservices.customService.CreateWorkItem;
-import com.kelmorgan.ibpservices.initializer.ServiceHandler;
+import com.kelmorgan.ibpservices.initializer.IBPSServiceHandler;
 import com.kelmorgan.ibpservices.utils.Constants;
 import com.kelmorgan.ibpservices.utils.LoadProp;
 import com.kelmorgan.ibpservices.utils.LogGen;
@@ -12,7 +12,7 @@ import org.apache.log4j.Logger;
 import java.util.Map;
 import java.util.Set;
 
-public class Service implements Constants, ServiceHandler {
+public class Service implements Constants, IBPSServiceHandler {
     private  String sessionId;
     private final LoadProp loadProp;
     private final Logger logger;

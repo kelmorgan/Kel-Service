@@ -2,6 +2,6 @@ package com.kelmorgan.ibpservices.initializer;
 
 public interface ServiceInjector {
 
-    ServiceHandler getService(String configPath);
-    ServiceHandler getService(String configPath,String username, String password);
+    IBPSServiceHandler getService(String configPath);
+    IBPSServiceHandler getService(String configPath, String username, String password);
 }

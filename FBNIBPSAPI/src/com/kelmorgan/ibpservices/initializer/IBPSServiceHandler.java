@@ -3,7 +3,7 @@ package com.kelmorgan.ibpservices.initializer;
 import java.util.Map;
 import java.util.Set;
 
-public interface ServiceHandler {
+public interface IBPSServiceHandler {
     String completeWorkItem(String wiName);
     String completeWorkItem(String wiName, String tableName, String attribute, String value, String condition);
     String createWorkItem(String attributes, String processDefId, String queueId, String initiateFlag);
