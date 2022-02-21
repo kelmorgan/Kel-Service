@@ -79,4 +79,14 @@ public class Service implements Constants, IBPSServiceHandler {
         this.sessionId = sessionId;
     }
 
+    @Override
+    public void addDocument(String folderIndex, String documentSize, String pageCount, String uploadType, String ISIndex, String appName, String docType) {
+        controller.addDocument(sessionId,folderIndex,documentSize,pageCount,uploadType,ISIndex,appName,docType);
+    }
+
+    @Override
+    public void getDocumentList(String wiName, String numberOfRecords) {
+        controller.getDocumentListAttached(sessionId,wiName,numberOfRecords);
+    }
+
 }

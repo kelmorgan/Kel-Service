@@ -3,10 +3,7 @@ package com.kelmorgan.ibpservices.controller;
 
 import com.kelmorgan.ibpservices.api.Api;
 import com.kelmorgan.ibpservices.generateXml.RequestXml;
-import com.kelmorgan.ibpservices.utils.Constants;
-import com.kelmorgan.ibpservices.utils.DbConnect;
-import com.kelmorgan.ibpservices.utils.LoadProp;
-import com.kelmorgan.ibpservices.utils.XmlParser;
+import com.kelmorgan.ibpservices.utils.*;
 import org.apache.log4j.Logger;
 
 import java.util.Map;
@@ -28,6 +25,36 @@ public class Controller implements Constants {
         this.username = loadProp.getServiceUserName();
         this.password = loadProp.getServiceUserPassword();
         this.api = new Api(loadProp);
+    }
+
+
+    public void getDocumentListAttached(String sessionId, String wiName,String numberOfRecords){
+        logger.info("Get Document list api call");
+        try{
+            inputXml = RequestXml.getDocumentListXml(cabinetName,sessionId,getFolderIndex(wiName),numberOfRecords);
+            logger.info("Input: "+inputXml);
+
+            outputXml = api.executeCall(inputXml);
+            logger.info("Output: "+outputXml);
+
+        }
+        catch (Exception e){
+            logger.error("Exception occurred in get document list call: "+ e.getMessage());
+        }
+    }
+
+    public void  addDocument(String sessionId,String folderIndex,String documentSize, String pageCount,String uploadType, String ISIndex,String appName,String docType){
+        logger.info("Add document in Image Server Api");
+        try {
+            inputXml = RequestXml.getAddDocumentXml(cabinetName,sessionId,folderIndex,documentSize,pageCount,uploadType,ISIndex,appName,docType);
+            logger.info("inputXml: "+inputXml);
+
+            outputXml = api.executeCall(inputXml);
+            logger.info("output: "+outputXml);
+        }
+        catch (Exception e){
+            logger.error("Exception occurred");
+        }
     }
 
     public String getSessionId(String userName,String passWord){
@@ -187,6 +214,19 @@ public class Controller implements Constants {
     }
     private boolean success(String response){
         return response.equalsIgnoreCase("0");
+    }
+
+    private String getFolderIndex(String wiName) {
+        logger.info("-----fetching folderIndex for wiName: "+wiName);
+        String query = Query.getFolderIndex(wiName);
+        Set<Map<String, String>> queryOutput = getRecords(query);
+        logger.info("queryOutput: "+queryOutput);
+
+        String folderIndexColumnName = "FolderIndex";
+        for (Map<String, String> result : queryOutput)
+            return result.get(folderIndexColumnName.toUpperCase());
+
+        return null;
     }
 }
 

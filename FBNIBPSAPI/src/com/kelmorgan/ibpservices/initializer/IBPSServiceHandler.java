@@ -14,4 +14,7 @@ public interface IBPSServiceHandler {
     String getSessionId(String userName,String passWord);
     String getSessionId();
     void setSessionId(String sessionId);
+    void addDocument(String folderIndex,String documentSize, String pageCount,String uploadType, String ISIndex,String appName,String docType);
+    void getDocumentList(String wiName, String numberOfRecords);
+
 }
