@@ -13,4 +13,14 @@ public interface Constants {
     String usernameField = "USERNAME";
     String passwordField = "PASSWORD";
     String logPathField = "LOGPATH";
+
+    String docIndexKey = "documentIndex";
+    String docNameKey = "documentName";
+    String ownerIndexKey = "ownerIndex";
+    String uploadDateKey = "uploadDate";
+    String revisedDateKey ="revisedDate";
+    String isIndexKey = "isIndex";
+    String docSizeKey = "documentSize";
+    String fileNameKey = "fileName";
+    String fileExtensionKey = "fileExtension";
 }

@@ -3,12 +3,14 @@ package com.kelmorgan.ibpservices.service;
 import com.kelmorgan.ibpservices.controller.Controller;
 import com.kelmorgan.ibpservices.customService.CompleteWorkItem;
 import com.kelmorgan.ibpservices.customService.CreateWorkItem;
+import com.kelmorgan.ibpservices.customService.GetDocumentList;
 import com.kelmorgan.ibpservices.initializer.IBPSServiceHandler;
 import com.kelmorgan.ibpservices.utils.Constants;
 import com.kelmorgan.ibpservices.utils.LoadProp;
 import com.kelmorgan.ibpservices.utils.LogGen;
 import org.apache.log4j.Logger;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -85,8 +87,8 @@ public class Service implements Constants, IBPSServiceHandler {
     }
 
     @Override
-    public void getDocumentList(String wiName, String numberOfRecords) {
-        controller.getDocumentListAttached(sessionId,wiName,numberOfRecords);
+    public List<Map<String,String>> getDocumentList(String wiName, String numberOfRecords) {
+        return new GetDocumentList(wiName,sessionId,controller,numberOfRecords).getDocuments();
     }
 
 }

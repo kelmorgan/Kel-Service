@@ -1,5 +1,6 @@
 package com.kelmorgan.ibpservices.initializer;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -15,6 +16,6 @@ public interface IBPSServiceHandler {
     String getSessionId();
     void setSessionId(String sessionId);
     void addDocument(String folderIndex,String documentSize, String pageCount,String uploadType, String ISIndex,String appName,String docType);
-    void getDocumentList(String wiName, String numberOfRecords);
+    List<Map<String,String>> getDocumentList(String wiName, String numberOfRecords);
 
 }

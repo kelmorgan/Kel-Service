@@ -28,23 +28,23 @@ public class Controller implements Constants {
     }
 
 
-    public void getDocumentListAttached(String sessionId, String wiName,String numberOfRecords){
-        logger.info("Get Document list api call");
+    public String getDocumentListAttached(String sessionId, String wiName,String numberOfRecords){
+        logger.info("------------Get Document list api call------------------");
         try{
-            inputXml = RequestXml.getDocumentListXml(cabinetName,sessionId,getFolderIndex(wiName),numberOfRecords);
-            logger.info("Input: "+inputXml);
-
-            outputXml = api.executeCall(inputXml);
-            logger.info("Output: "+outputXml);
-
+                inputXml = RequestXml.getDocumentListXml(cabinetName, sessionId, getFolderIndex(wiName), numberOfRecords);
+                logger.info("Input: " + inputXml);
+                outputXml = api.executeCall(inputXml);
+                logger.info("Output: " + outputXml);
+                return outputXml;
         }
         catch (Exception e){
             logger.error("Exception occurred in get document list call: "+ e.getMessage());
         }
+        return  null;
     }
 
     public void  addDocument(String sessionId,String folderIndex,String documentSize, String pageCount,String uploadType, String ISIndex,String appName,String docType){
-        logger.info("Add document in Image Server Api");
+        logger.info("----------Add document in Image Server Api-------------------");
         try {
             inputXml = RequestXml.getAddDocumentXml(cabinetName,sessionId,folderIndex,documentSize,pageCount,uploadType,ISIndex,appName,docType);
             logger.info("inputXml: "+inputXml);
@@ -58,7 +58,7 @@ public class Controller implements Constants {
     }
 
     public String getSessionId(String userName,String passWord){
-        logger.info("Welcome to getSession method");
+        logger.info("--------------Welcome to getSession method-------------------");
         String connectXml = RequestXml.getConnectCabinetXml(cabinetName,userName,passWord);
         logger.info("connectXml: "+connectXml);
         try {
@@ -76,7 +76,7 @@ public class Controller implements Constants {
         return null;
     }
     public String getSessionId(){
-        logger.info("Welcome to getSession method");
+        logger.info("---------------Welcome to getSession method-------------------");
         String connectXml = RequestXml.getConnectCabinetXml(cabinetName,username,password);
         logger.info("connectXml: "+connectXml);
         try {
@@ -94,7 +94,7 @@ public class Controller implements Constants {
         return null;
     }
     public String getCreatedWorkItem(String sessionId,String attributes,String processDefId, String queueId,String initiateFlag){
-        logger.info("Welcome to Created WorkItem method");
+        logger.info("--------------Welcome to Created WorkItem method-------------------");
         inputXml = RequestXml.getCreateWorkItemXml(cabinetName,sessionId,processDefId,queueId,attributes,initiateFlag);
         logger.info("inputXml: "+inputXml);
         System.out.println("input from upload api:"+inputXml);
@@ -111,7 +111,7 @@ public class Controller implements Constants {
         return null;
     }
     public String completeWorkItem (String sessionId, String wiName) {
-        logger.info("Welcome to Complete WorkItem method");
+        logger.info("------------------------Welcome to Complete WorkItem method------------------------");
         inputXml = RequestXml.getCompleteWorkItemXml(cabinetName,sessionId,wiName);
         logger.info("inputXml: "+inputXml);
         System.out.println("input from completeworkitem-- "+inputXml);
@@ -129,7 +129,7 @@ public class Controller implements Constants {
         return apiFailed;
     }
     public void lockWorkItem(String sessionId,String wiName){
-        logger.info("Welcome to Lock WorkItem method");
+        logger.info("---------------------Welcome to Lock WorkItem method----------------------");
         inputXml = RequestXml.getLockWorkItemInputXml(cabinetName,sessionId,wiName);
         logger.info("inputXml: "+inputXml);
 
@@ -144,7 +144,7 @@ public class Controller implements Constants {
         }
     }
     public void unlockWorkItem (String sessionId,String wiName){
-        logger.info("Welcome to unlock WorkItem method");
+        logger.info("--------------------Welcome to unlock WorkItem method--------------------------");
         inputXml = RequestXml.getUnlockWorkItemXml(cabinetName,sessionId,wiName);
         logger.info("inputXml: "+inputXml);
         System.out.println("input from unlock workitem-- "+inputXml);
@@ -172,7 +172,7 @@ public class Controller implements Constants {
         }
     }
     public void sendMail(String sessionId, String activityId, String processInstanceId,String processDefId, String mailFrom, String mailTo, String mailCC, String mailSubject, String mailMessage   ) {
-        logger.info("Welcome to sendMail method");
+        logger.info("-----------------Welcome to sendMail method----------------------");
         inputXml = RequestXml.getAddToMailQueue(cabinetName, sessionId, processDefId, activityId, processInstanceId, mailFrom, mailTo, mailCC, mailSubject, mailMessage);
         logger.info("inputXml: "+inputXml);
         try {
@@ -185,7 +185,7 @@ public class Controller implements Constants {
 
     }
     public void disconnectSession (String sessionId){
-        logger.info("Welcome to Disconnect Session method");
+        logger.info("-------------------Welcome to Disconnect Session method---------------------");
         inputXml = RequestXml.getDisconnectCabinetXml(cabinetName,sessionId);
         logger.info("inputXml: "+inputXml);
         System.out.println("input from disconnect cabinet-- "+inputXml);
@@ -198,15 +198,15 @@ public class Controller implements Constants {
         }
     }
     public Set<Map<String,String>> getRecords(String query){
-        logger.info("Welcome to getRecords method");
+        logger.info("-----------------Welcome to getRecords method--------------------");
         return new DbConnect(logger,api, RequestXml.getSelectQueryXml(query,cabinetName)).getData();
     }
     public int updateRecords(String sessionId, String tableName, String columnName, String values, String condition){
-        logger.info("Welcome to Update Records method");
+        logger.info("---------------Welcome to Update Records method-------------------");
        return new DbConnect(logger,api, RequestXml.getUpdateQueryXml(cabinetName, sessionId, tableName, columnName, values, condition)).saveData();
     }
     public int insertRecords(String sessionId,String tableName,String columnName, String values){
-        logger.info("Welcome to Insert Records method");
+        logger.info("---------------Welcome to Insert Records method--------------------");
         return new DbConnect(logger,api, RequestXml.getInsertQueryXml(cabinetName,sessionId,tableName,columnName,values)).saveData();
     }
     public int deleteRecords(String sessionId,String tableName,String condition){
@@ -227,6 +227,10 @@ public class Controller implements Constants {
             return result.get(folderIndexColumnName.toUpperCase());
 
         return null;
+    }
+
+    private boolean isEmpty(String value){
+        return value.isEmpty() || value == null;
     }
 }
 
