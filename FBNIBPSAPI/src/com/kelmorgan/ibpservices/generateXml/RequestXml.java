@@ -2,8 +2,6 @@ package com.kelmorgan.ibpservices.generateXml;
 
 public class RequestXml {
 
-    private static final StringBuilder builder = new StringBuilder();
-
     public static String getDocumentListXml(String cabinetName,
                                             String sessionId, String folderIndex, String noOfRecordsToFetch) {
         return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
@@ -44,86 +42,85 @@ public class RequestXml {
     }
 
     public static String getConnectCabinetXml(String cabinetName, String userName, String password) {
-        builder.append("<?xml version=1.0?>");
-        builder.append("<WMConnect_input>");
-        builder.append("<Option>WMConnect</Option>");
-        builder.append("<EngineName>").append(cabinetName).append("</EngineName>");
-        builder.append("<ApplicationInfo>127.0.0.1</ApplicationInfo>");
-        builder.append("<Participant>");
-        builder.append("<Name>").append(userName).append("</Name>");
-        builder.append("<Password>").append(password).append("</Password>");
-        builder.append("<Scope></Scope>");
-        builder.append("<UserExist>Y</UserExist>");
-        builder.append("<ParticipantType>U</ParticipantType>");
-        builder.append("</Participant>");
-        builder.append("<WMConnect_input>");
 
-        return builder.toString();
+        return "<?xml version=1.0?>" +
+                "<WMConnect_input>" +
+                "<Option>WMConnect</Option>" +
+                "<EngineName>" + cabinetName + "</EngineName>" +
+                "<ApplicationInfo>127.0.0.1</ApplicationInfo>" +
+                "<Participant>" +
+                "<Name>" + userName + "</Name>" +
+                "<Password>" + password + "</Password>" +
+                "<Scope></Scope>" +
+                "<UserExist>Y</UserExist>" +
+                "<ParticipantType>U</ParticipantType>" +
+                "</Participant>" +
+                "<WMConnect_input>";
     }
 
     public static String getDisconnectCabinetXml(String cabinetName, String sessionId) {
-        builder.append("<?xml version=1.0?>");
-        builder.append("<WMDisConnect_Input>");
-        builder.append("<Option>WMDisConnect</Option>");
-        builder.append("<EngineName>").append(cabinetName).append("</EngineName>");
-        builder.append("<SessionID>").append(sessionId).append("</SessionID>");
-        builder.append("</WMDisConnect_Input>");
-        return builder.toString();
+
+        return "<?xml version=1.0?>" +
+                "<WMDisConnect_Input>" +
+                "<Option>WMDisConnect</Option>" +
+                "<EngineName>" + cabinetName + "</EngineName>" +
+                "<SessionID>" + sessionId + "</SessionID>" +
+                "</WMDisConnect_Input>";
     }
 
     public static String getCreateWorkItemXml1(String cabinetName, String sessionId, String processDefId, String queueId, String attributes) {
-        builder.append("<?xml version=1.0?>");
-        builder.append("<WFUploadWorkItem_Input>");
-        builder.append("<Option>WFUploadWorkItem</Option>");
-        builder.append("<EngineName>").append(cabinetName).append("</EngineName>");
-        builder.append("<SessionId>").append(sessionId).append("</SessionId>");
-        builder.append("<ProcessDefId>").append(processDefId).append("</ProcessDefId>");
-        builder.append("<VariantId></VariantId>");
-        builder.append("<QueueId>").append(queueId).append("</QueueId>");
-        builder.append("<InitiateFromActivityId></InitiateFromActivityId>");
-        builder.append("<InitiateAlso>Y</InitiateAlso>");
-        builder.append("<Attributes>").append(attributes).append("</Attributes>");
-        builder.append("<Documents></Documents>");
-        builder.append("</WFUploadWorkItem_Input>");
-        return builder.toString();
+
+        return "<?xml version=1.0?>" +
+                "<WFUploadWorkItem_Input>" +
+                "<Option>WFUploadWorkItem</Option>" +
+                "<EngineName>" + cabinetName + "</EngineName>" +
+                "<SessionId>" + sessionId + "</SessionId>" +
+                "<ProcessDefId>" + processDefId + "</ProcessDefId>" +
+                "<VariantId></VariantId>" +
+                "<QueueId>" + queueId + "</QueueId>" +
+                "<InitiateFromActivityId></InitiateFromActivityId>" +
+                "<InitiateAlso>Y</InitiateAlso>" +
+                "<Attributes>" + attributes + "</Attributes>" +
+                "<Documents></Documents>" +
+                "</WFUploadWorkItem_Input>";
     }
 
     public static String getCreateWorkItemXml(String cabinetName, String sessionId, String processDefId, String queueId, String attributes, String initiateFlag) {
-        builder.append("<?xml version=1.0?>");
-        builder.append("<WFUploadWorkItem_Input>");
-        builder.append("<Option>WFUploadWorkItem</Option>");
-        builder.append("<EngineName>").append(cabinetName).append("</EngineName>");
-        builder.append("<SessionId>").append(sessionId).append("</SessionId>");
-        builder.append("<ProcessDefId>").append(processDefId).append("</ProcessDefId>");
-        builder.append("<QueueId>").append(queueId).append("</QueueId>");
-        builder.append("<DataDefName></DataDefName>");
-        builder.append("<UserDefVarFlag>Y</UserDefVarFlag>");
-        builder.append("<Fields></Fields>");
-        builder.append("<InitiateAlso>").append(initiateFlag).append("</InitiateAlso>");
-        builder.append("<InitiateFromActivityId/>");
-        builder.append("<Attributes>").append(attributes).append("</Attributes>");
-        builder.append("<Documents></Documents>");
-        builder.append("</WFUploadWorkItem_Input>");
-        return builder.toString();
+
+        return "<?xml version=1.0?>" +
+                "<WFUploadWorkItem_Input>" +
+                "<Option>WFUploadWorkItem</Option>" +
+                "<EngineName>" + cabinetName + "</EngineName>" +
+                "<SessionId>" + sessionId + "</SessionId>" +
+                "<ProcessDefId>" + processDefId + "</ProcessDefId>" +
+                "<QueueId>" + queueId + "</QueueId>" +
+                "<DataDefName></DataDefName>" +
+                "<UserDefVarFlag>Y</UserDefVarFlag>" +
+                "<Fields></Fields>" +
+                "<InitiateAlso>" + initiateFlag + "</InitiateAlso>" +
+                "<InitiateFromActivityId/>" +
+                "<Attributes>" + attributes + "</Attributes>" +
+                "<Documents></Documents>" +
+                "</WFUploadWorkItem_Input>";
     }
 
     public static String getAddToMailQueue(String cabinetName, String sessionId, String processDefId, String activityId, String processInstanceId, String mailFrom, String mailTo, String mailCC, String mailSubject, String mailMessage) {
-        builder.append("<?xml version=1.0?>");
-        builder.append("<WFAddToMailQueue_Input>");
-        builder.append("<Option>WFAddToMailQueue</Option>");
-        builder.append("<EngineName>").append(cabinetName).append("</EngineName>");
-        builder.append("<SessionId>").append(sessionId).append("</SessionId>");
-        builder.append("<ProcessDefId>").append(processDefId).append("</ProcessDefId>");
-        builder.append("<ActivityId>").append(activityId).append("<ActivityId>");
-        builder.append("<ProcessInstanceId>").append(processInstanceId).append("</ProcessInstanceId>");
-        builder.append("<WorkItemId>1</WorkItemId>");
-        builder.append("<MailFrom>").append(mailFrom).append("</MailFrom>");
-        builder.append("<MailTo>").append(mailTo).append("</MailTo>");
-        builder.append("<MailCC>").append(mailCC).append("</MailCC>");
-        builder.append("<MailSubject>").append(mailSubject).append("</MailSubject>");
-        builder.append("<MailMessage>").append(mailMessage).append("</MailMessage>");
-        builder.append("</WFAddToMailQueue_Input>");
-        return builder.toString();
+
+        return "<?xml version=1.0?>" +
+                "<WFAddToMailQueue_Input>" +
+                "<Option>WFAddToMailQueue</Option>" +
+                "<EngineName>" + cabinetName + "</EngineName>" +
+                "<SessionId>" + sessionId + "</SessionId>" +
+                "<ProcessDefId>" + processDefId + "</ProcessDefId>" +
+                "<ActivityId>" + activityId + "<ActivityId>" +
+                "<ProcessInstanceId>" + processInstanceId + "</ProcessInstanceId>" +
+                "<WorkItemId>1</WorkItemId>" +
+                "<MailFrom>" + mailFrom + "</MailFrom>" +
+                "<MailTo>" + mailTo + "</MailTo>" +
+                "<MailCC>" + mailCC + "</MailCC>" +
+                "<MailSubject>" + mailSubject + "</MailSubject>" +
+                "<MailMessage>" + mailMessage + "</MailMessage>" +
+                "</WFAddToMailQueue_Input>";
     }
 
     public static String getLockWorkItemInputXml(String cabinetName, String sessionId, String processInstanceId) {
@@ -166,50 +163,46 @@ public class RequestXml {
 
     public static String getFetchWorkListXml(String cabinetName, String sessionId, String queueId, String batchLimit) {
 
-        builder.append("<?xml version='1.0'?>");
-        builder.append("<WMFetchWorkList_Input>");
-        builder.append("<Option>WMFetchWorkList</Option>");
-        builder.append("<EngineName>").append(cabinetName).append("</EngineName>");
-        builder.append("<SessionId>").append(sessionId).append("</SessionId>");
-        builder.append("<CountFlag>Y</CountFlag>");
-        builder.append("<DataFlag>Y</DataFlag>");
-        builder.append("<ZipBuffer>N</ZipBuffer>");
-        builder.append("<FetchLockedFlag>N</FetchLockedFlag>");
-        builder.append("<Filter><QueueId>").append(queueId).append("</QueueId>");
-        builder.append("<Type>256</Type>");
-        builder.append("<Comparison>0</Comparison>");
-        builder.append("<FilterString></FilterString>");
-        builder.append("</Filter>");
-        builder.append("<BatchInfo>");
-        builder.append("<NoOfRecordsToFetch>").append(batchLimit).append("</NoOfRecordsToFetch>");
-        builder.append("<OrderBy>1</OrderBy>");
-        builder.append("<SortOrder>A</SortOrder>");
-        builder.append("</BatchInfo>");
-        builder.append("<QueueType>N</QueueType>");
-        builder.append("</WMFetchWorkList_Input>");
-
-        return builder.toString();
+        return "<?xml version='1.0'?>" +
+                "<WMFetchWorkList_Input>" +
+                "<Option>WMFetchWorkList</Option>" +
+                "<EngineName>" + cabinetName + "</EngineName>" +
+                "<SessionId>" + sessionId + "</SessionId>" +
+                "<CountFlag>Y</CountFlag>" +
+                "<DataFlag>Y</DataFlag>" +
+                "<ZipBuffer>N</ZipBuffer>" +
+                "<FetchLockedFlag>N</FetchLockedFlag>" +
+                "<Filter><QueueId>" + queueId + "</QueueId>" +
+                "<Type>256</Type>" +
+                "<Comparison>0</Comparison>" +
+                "<FilterString></FilterString>" +
+                "</Filter>" +
+                "<BatchInfo>" +
+                "<NoOfRecordsToFetch>" + batchLimit + "</NoOfRecordsToFetch>" +
+                "<OrderBy>1</OrderBy>" +
+                "<SortOrder>A</SortOrder>" +
+                "</BatchInfo>" +
+                "<QueueType>N</QueueType>" +
+                "</WMFetchWorkList_Input>";
     }
 
     public static String getAssignAttributeXml(String cabinetName, String sessionId, String wiName, String attributeName, String value) {
 
-        builder.append("<?xml version='1.0'?>");
-        builder.append("<WMAssignWorkItemAttribute_Input>");
-        builder.append("<Option>WMAssignWorkItemAttribute</Option>");
-        builder.append("<EngineName>").append(cabinetName).append("</EngineName>");
-        builder.append("<SessionId>").append(sessionId).append("</SessionId>");
-        builder.append("<ProcessInstanceId>").append(wiName).append("</ProcessInstanceId>");
-        builder.append("<WorkItemId>1</WorkItemId>");
-        builder.append("<Attributes>");
-        builder.append("<Attribute>");
-        builder.append("<Name>").append(attributeName).append("</Name>");
-        builder.append("<Type>10</Type>");
-        builder.append("<Value>").append(value).append("</Value>");
-        builder.append("</Attribute>");
-        builder.append("</Attributes>");
 
-
-        return builder.toString();
+        return "<?xml version='1.0'?>" +
+                "<WMAssignWorkItemAttribute_Input>" +
+                "<Option>WMAssignWorkItemAttribute</Option>" +
+                "<EngineName>" + cabinetName + "</EngineName>" +
+                "<SessionId>" + sessionId + "</SessionId>" +
+                "<ProcessInstanceId>" + wiName + "</ProcessInstanceId>" +
+                "<WorkItemId>1</WorkItemId>" +
+                "<Attributes>" +
+                "<Attribute>" +
+                "<Name>" + attributeName + "</Name>" +
+                "<Type>10</Type>" +
+                "<Value>" + value + "</Value>" +
+                "</Attribute>" +
+                "</Attributes>";
     }
 
     public static String getSelectQueryXml(String query, String cabinetName) {
@@ -261,16 +254,14 @@ public class RequestXml {
 
     private static String connectCabinetXML(String strCabinetName, String strUserName, String strPassword) {
 
-        builder.append("<?xml version=1.0?>");
-        builder.append("<NGOConnectCabinet_Input>");
-        builder.append("<Option>NGOConnectCabinet</Option>");
-        builder.append("<CabinetName>").append(strCabinetName).append("</CabinetName>");
-        builder.append("<UserName>" + strUserName + "</UserName><UserPassword>" + strPassword + "</UserPassword>");
-        builder.append("<UserExist>N</UserExist><ListSysFolder>N</ListSysFolder>");
-        builder.append("<UserType>U</UserType>");
-        builder.append("</NGOConnectCabinet_Input>");
-
-        return builder.toString();
+        return "<?xml version=1.0?>" +
+                "<NGOConnectCabinet_Input>" +
+                "<Option>NGOConnectCabinet</Option>" +
+                "<CabinetName>" + strCabinetName + "</CabinetName>" +
+                "<UserName>" + strUserName + "</UserName><UserPassword>" + strPassword + "</UserPassword>" +
+                "<UserExist>N</UserExist><ListSysFolder>N</ListSysFolder>" +
+                "<UserType>U</UserType>" +
+                "</NGOConnectCabinet_Input>";
 
     }
 
