@@ -95,14 +95,14 @@ public class Controller implements Constants {
 
     public String getCreatedWorkItem(String sessionId, String attributes, String processDefId, String queueId, String initiateFlag) {
         logger.info("--------------Welcome to Created WorkItem method-------------------");
-        String inputXml = RequestXml.getCreateWorkItemXml(cabinetName, sessionId, processDefId, queueId, attributes, initiateFlag);
-        logger.info("inputXmlNew : " + inputXml);
-        System.out.println("input from upload api:" + inputXml);
+        String thisNewInput = RequestXml.getCreateWorkItemXml(cabinetName, sessionId, processDefId, queueId, attributes, initiateFlag);
+        logger.info("inputXmlNew : " + thisNewInput);
+        System.out.println("input :" + thisNewInput);
         try {
-            String outputXml = api.executeCall(inputXml);
-            logger.info("outputXmlNew : " + outputXml);
-            System.out.println("output: " + outputXml);
-            xmlParser.setInputXML(outputXml);
+            String ThisNewOutput = api.executeCall(thisNewInput);
+            logger.info("outputXmlNew : " + ThisNewOutput);
+            System.out.println("output: " + ThisNewOutput);
+            xmlParser.setInputXML(ThisNewOutput);
             if (success(xmlParser.getValueOf("MainCode")))
                 return xmlParser.getValueOf("ProcessInstanceId");
         } catch (Exception e) {
